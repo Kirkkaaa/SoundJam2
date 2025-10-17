@@ -18,18 +18,20 @@ public class Death : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (isDead) return;
-        if (collision.gameObject.CompareTag(enemyTag)) StartDeath();
+        Debug.Log("Collided");
+        if (collision.gameObject.CompareTag("Enemy")) StartDeath();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isDead) return;
-        if (other.gameObject.CompareTag(enemyTag)) StartDeath();
+        Debug.Log("Collided");
+        if (other.CompareTag("Enemy")) StartDeath();
     }
 
     private void StartDeath()
     {
+        Debug.Log("Player has died.");
+
         isDead = true;
 
         // Disable ThirdPersonController on same GameObject (if present)
